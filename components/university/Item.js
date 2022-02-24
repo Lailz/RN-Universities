@@ -1,8 +1,9 @@
 import { Text, Alert, Button, Linking, StyleSheet } from "react-native";
 
-import { HStack, VStack, Avatar } from "native-base";
+import { HStack, VStack, Avatar, useToast } from "native-base";
 import { useCallback } from "react";
-
+import { Ionicons } from "@expo/vector-icons";
+import favoriteStore from "../../stores/favoriteStore";
 const OpenURLButton = ({ url, children }) => {
   const handlePress = useCallback(async () => {
     // Checking if the link is supported for links with custom URL scheme.
@@ -21,11 +22,18 @@ const OpenURLButton = ({ url, children }) => {
 };
 
 export default function ProductItem({ uni }) {
+  const toast = useToast();
   const domains = uni.domains.map((domain, index) => (
     <OpenURLButton key={index} url={`https://${domain}`} style={styles.url}>
       {domain}
     </OpenURLButton>
   ));
+  const handlePress = () => {
+    favoriteStore.addFavorite(uni);
+    toast.show({
+      description: "💜",
+    });
+  };
   return (
     <HStack style={styles.container} space="3">
       <Avatar
@@ -38,6 +46,7 @@ export default function ProductItem({ uni }) {
         <Text style={styles.name}>{uni.name}</Text>
         <HStack>{domains}</HStack>
       </VStack>
+      <Ionicons name="heart" size={20} color="purple" onPress={handlePress} />
     </HStack>
   );
 }

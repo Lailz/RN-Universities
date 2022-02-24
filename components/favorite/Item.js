@@ -37,6 +37,7 @@ export default function ProductItem({ fav }) {
 
       <VStack>
         <Text style={styles.name}>{university.name}</Text>
+        <Text style={styles.name}>{fav.likes}</Text>
         <HStack>{domains}</HStack>
       </VStack>
     </HStack>

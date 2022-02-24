@@ -6,8 +6,7 @@ const Home = ({ navigation }) => {
   return (
     <ImageBackground
       source={{
-        uri:
-          "https://assets.website-files.com/5d4d6eb7574a78717cd85ee7/602f150904194561a3600353_purple-blob.png",
+        uri: "https://assets.website-files.com/5d4d6eb7574a78717cd85ee7/602f150904194561a3600353_purple-blob.png",
       }}
       style={styles.container}
     >
@@ -36,13 +35,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    flex: 1,
+    flex: 4,
     fontFamily: "AppleSDGothicNeo-SemiBold",
     fontSize: 40,
     color: "purple",
   },
   subTitle: {
-    flex: 3,
+    flex: 2,
     marginTop: 10,
     fontFamily: "AppleSDGothicNeo-SemiBold",
     fontSize: 20,

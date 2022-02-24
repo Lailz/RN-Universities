@@ -1,30 +1,29 @@
-import favoriteStore from "../stores/favoriteStore";
+import favoriteStore from "../../stores/favoriteStore";
 import { observer } from "mobx-react";
 import Item from "./Item";
 import { ScrollView } from "native-base";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, View, Text, ImageBackground } from "react-native";
 
 const FavoriteList = () => {
-  const favoriteList = favoriteStore.favorites.map((favorite, index) => (
-    <Item key={index} favorite={favorite} />
+  const favoritesList = favoriteStore.favorites.map((fav, index) => (
+    <Item key={index} fav={fav} />
   ));
 
   return (
     <ImageBackground
       style={styles.container}
       source={{
-        uri:
-          "https://assets.website-files.com/5f9985d8119581bfd1d4a6e7/5f9985d81195817b2bd4a754_blob-hero.png",
+        uri: "https://www.razoyo.com/img/home/Purple-Blob-1@3x.png",
       }}
     >
-      <ScrollView style={styles.container}>{favoriteList}</ScrollView>
+      <ScrollView style={styles.container}>{favoritesList}</ScrollView>
     </ImageBackground>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 8,
+    marginTop: 2,
   },
 });
 export default observer(FavoriteList);

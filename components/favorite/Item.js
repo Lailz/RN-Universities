@@ -20,8 +20,9 @@ const OpenURLButton = ({ url, children }) => {
   return <Button title={children} onPress={handlePress} />;
 };
 
-export default function ProductItem({ uni }) {
-  const domains = uni.domains.map((domain, index) => (
+export default function ProductItem({ fav }) {
+  const { university } = fav;
+  const domains = university.domains.map((domain, index) => (
     <OpenURLButton key={index} url={`https://${domain}`} style={styles.url}>
       {domain}
     </OpenURLButton>
@@ -35,7 +36,7 @@ export default function ProductItem({ uni }) {
       />
 
       <VStack>
-        <Text style={styles.name}>{uni.name}</Text>
+        <Text style={styles.name}>{university.name}</Text>
         <HStack>{domains}</HStack>
       </VStack>
     </HStack>

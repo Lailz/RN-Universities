@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./components/Home";
 import UniversityList from "./components/university/UniversityList";
+import FavoriteList from "./components/favorite/FavoriteList";
+import FavoriteButton from "./components/favorite/FavoriteButton";
 
 const { Navigator, Screen } = createStackNavigator();
 export default function App() {
@@ -15,9 +17,12 @@ export default function App() {
           <Screen
             name="List"
             component={UniversityList}
-            options={{ headerLeft: null }}
+            options={{
+              headerLeft: null,
+              headerRight: () => <FavoriteButton />,
+            }}
           />
-          <Screen name="Favorite" component={UniversityList} />
+          <Screen name="Favorites" component={FavoriteList} />
         </Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
